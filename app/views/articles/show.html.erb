@@ -1,0 +1,6 @@
+<%= stylesheet_link_tag "main" %>
+<h1><%= @article_to_show.header %></h1>
+<div>
+<%= @article_to_show.body %>
+</div>
+<%= link_to 'Back', user_path(@article_to_show.user.id) %>

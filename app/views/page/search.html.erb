@@ -1,0 +1,8 @@
+<h1>Search results:</h1>
+<% if @user != nil %>
+<%= form_tag(user_path(@user.id), method: "get") do %>
+		  <%= submit_tag(@user.login) %>
+<% end %>		  
+<% else %>
+<p>User not found</p>
+<% end %>

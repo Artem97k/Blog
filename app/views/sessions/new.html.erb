@@ -1,0 +1,21 @@
+<%= stylesheet_link_tag "main" %>
+<table align = "center" class = "block">
+<tr>
+<td>
+<%= form_tag("/sessions/create", method: "post") do %>
+  <%= label_tag(:login, "Login:") %>
+  <%= text_field_tag(:login) %>
+<br>    
+  <%= label_tag(:password, "Password:") %>
+  <%= password_field_tag(:password) %>
+<br>  
+  <%= submit_tag("Log in") %>
+<% end %>
+</td>
+</tr>
+<tr>
+<td>
+<p><%= notice %></p>
+</td>
+</tr>
+</table>

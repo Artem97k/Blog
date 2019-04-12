@@ -1,0 +1,20 @@
+<% if current_user %>
+<h1>New article</h1>
+<br>
+<%= link_to 'Back', user_path(current_user.id) %>
+<br>
+<br>
+<%= form_tag("/articles/create", method: "post") do %>
+          <%= label_tag 'Header' %>
+		  <br>
+          <%= text_field_tag( :header, nil, :size => 49 ) %>
+		  <br>
+		  <%= label_tag 'Body' %>
+		  <br>
+          <%= text_area_tag :body, nil, :rows => 20, :cols => 50 %>
+		  <br>
+		  <%= submit_tag("Create") %>
+<% end %>
+<% else %>
+<h1>Log in!</h1>
+<% end %>

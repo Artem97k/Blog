@@ -1,0 +1,36 @@
+<%= stylesheet_link_tag "navbar" %>
+<table id = "navbar", align = "center">
+ <tr>
+    <td>	
+	  <%= form_tag("/page/index", method: "get") do %>
+		  <%= submit_tag("Home") %>
+		<% end %>
+	</td>
+	<td>	
+	  <%= form_tag("/users", method: "get") do %>
+		  <%= submit_tag("Users") %>
+		<% end %>
+	</td>
+	<% if logged_in? %>
+	<td>	
+	  <%= form_tag(user_path(session[:current_user_id]), method: "get") do %>
+		  <%= submit_tag(User.find(session[:current_user_id]).login) %>
+	  <% end %>
+	</td>
+	<% end %>
+	<td>	
+	    <%= form_tag("/page/search", method: "get") do %>
+		  <%= submit_tag("Search") %>
+		  <%= search_field_tag(:search_query) %>
+		<% end %>
+	</td>
+    <td>	
+		<% if not logged_in? %>
+		<%= link_to 'Sign up', controller: "users", action: "new" %>
+		<%= link_to 'Log in', controller: "sessions", action: "new" %>
+		<% else %>
+		<%= link_to 'Log out', controller: "sessions", action: "destroy" %>
+		<% end %>
+	</td>	
+ <tr>
+</table>

@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Login:</strong>
+  <%= @user.login %>
+</p>
+
+<% if current_user == @user %>
+
+<%= link_to 'Edit your data', edit_user_path(@user) %>
+
+<%= link_to 'Delete your account', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<br>
+<br>
+
+<%= form_tag("/articles/new", method: "get") do %>
+		  <%= submit_tag("Сreate new article") %>
+<% end %>
+
+<br>
+
+<% end %>
+<table align = "center">
+ <tr>
+  <td><strong>User's articles:</strong></td>
+ </tr>
+ <% @user.articles.each do |article| %>
+ <tr>
+ <td><%= link_to article.header, :controller => "articles", :action => "show", :id => article.id %></td>
+ <% if current_user == article.user %>
+ <td><%= link_to 'Delete article', :controller => "articles", :action => "destroy", :id => article.id %></td>
+ <% end %>
+ </tr>
+ <% end %>
+</table>
+<br>
